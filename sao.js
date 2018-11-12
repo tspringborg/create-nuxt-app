@@ -42,21 +42,21 @@ module.exports = {
       ],
       default: 'none'
     },
-    ui: {
-      message: 'Use a custom UI framework',
-      type: 'list',
-      choices: [
-        'none',
-        'bootstrap',
-        'vuetify',
-        'bulma',
-        'tailwind',
-        'element-ui',
-        'ant-design-vue',
-        'buefy'
-      ],
-      default: 'none'
-    },
+    // ui: {
+    //   message: 'Use a custom UI framework',
+    //   type: 'list',
+    //   choices: [
+    //     'none',
+    //     'bootstrap',
+    //     'vuetify',
+    //     'bulma',
+    //     'tailwind',
+    //     'element-ui',
+    //     'ant-design-vue',
+    //     'buefy'
+    //   ],
+    //   default: 'none'
+    // },
     mode: {
       message: 'Choose rendering mode',
       type: 'list',
@@ -66,36 +66,30 @@ module.exports = {
       ],
       default: 'universal'
     },
-    axios: {
-      message: 'Use axios module',
-      type: 'list',
-      choices: ['no', 'yes'],
-      default: 'no'
-    },
-    eslint: {
-      message: 'Use eslint',
-      type: 'list',
-      choices: ['no', 'yes'],
-      default: 'no'
-    },
-    prettier: {
-      message: 'Use prettier',
-      type: 'list',
-      choices: ['no', 'yes'],
-      default: 'no'
-    },
+    // axios: {
+    //   message: 'Use axios module',
+    //   type: 'list',
+    //   choices: ['no', 'yes'],
+    //   default: 'no'
+    // },
+    // eslint: {
+    //   message: 'Use eslint',
+    //   type: 'list',
+    //   choices: ['no', 'yes'],
+    //   default: 'no'
+    // },
+    // prettier: {
+    //   message: 'Use prettier',
+    //   type: 'list',
+    //   choices: ['no', 'yes'],
+    //   default: 'no'
+    // },
     author: {
       type: 'string',
       message: 'Author name',
       default: ':gitUser:',
       store: true
     },
-    pm: {
-      message: 'Choose a package manager',
-      choices: ['npm', 'yarn'],
-      type: 'list',
-      default: 'npm'
-    }
   },
   filters: {
     'server/index-express.js': 'server === "express"',
@@ -143,6 +137,14 @@ module.exports = {
     { npmInstall, yarnInstall, gitInit, chalk, isNewFolder, folderName, folderPath },
     { meta }
   ) {
+
+    /// update answers with our own custom settings
+    meta.answers.pm = 'npm'
+    meta.answers.prettier = 'no'
+    meta.answers.ui = 'none'
+    meta.answers.eslint = 'yes'
+    meta.answers.axios = 'yes'
+
     gitInit()
 
     // using yarn or npm
